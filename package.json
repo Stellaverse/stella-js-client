@@ -1,12 +1,12 @@
 {
   "name": "stella-js-client",
-  "version": "1.0.0",
-  "description": "A Javascript client for The Stellaverse",
+  "version": "1.0.1",
+  "description": "The official Javascript client for The Stellaverse",
   "main": "stella.min.js",
   "scripts": {
 	"dev": "grunt",
     "test": "echo \"Error: no test specified\" && exit 1",
-	"build": "echo \"This is the build script\""	
+	"build": "echo \"This is the build script\""
   },
   "author": "Aaron J Ban",
   "license": "ISC",
