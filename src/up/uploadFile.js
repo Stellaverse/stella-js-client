@@ -27,7 +27,7 @@ stella.up.uploadFile = function(upload) {
 		ACL : 'private',
 		ContentType : upload.file.type,
 		ContentLength : upload.file.size,
-		Body : upload.file,
+		Body : upload.file.buffer,
 		ServerSideEncryption : 'AES256'
 	});
 

@@ -4,27 +4,38 @@
 stella.up.initializeUpload = function(upload) {
 
 	var account = stella.util.getActiveAccount();
-	var to = upload.to || 'project';
+	var to = upload.to || 'drive';
 	var file = upload.file;
 
 	if (to === 'account') {
-		var api = 'accounts.files.insertFile';
-	}
-
-	if (to === 'project') {
-		var api = 'drive.objects.insertObject';
-	}
-
-	stella.api.request({
-		method : 'post',
-		api : api,
-		params : {
-			file : {
-				name : file.name,
-				size : file.size
+		var requestParams = {
+			method : 'post',
+			api : 'accounts.files.insertFile',
+			params : {
+				file : {
+					name : upload.file.name,
+					size : upload.file.size
+				}
 			}
-		}
-	}, function(result) {
+		};
+	}
+
+	if (to === 'drive') {
+		var requestParams = {
+			method : 'post',
+			api : 'drive.objects.insertObject',
+			projectID : upload.projectID,
+			params : {
+				locale : upload.locale,
+				parentID : upload.parentID,
+				objectType : upload.objectType,
+				title : upload.file.name,
+				filename : upload.file.name
+			}
+		};
+	}
+
+	stella.api.request(requestParams, function(result) {
 
 		if (result.error) {
 			stella.up.uploads[upload.id].status = 'error';
@@ -52,10 +63,10 @@ stella.up.initializeUpload = function(upload) {
 
 		}
 
-		if (to === 'project') {
+		if (to === 'drive') {
 
-			var object = result.data.object;
-
+			var object = result.data;
+			
 			upload.objectID = object._id;
 			upload.url = object.url;
 			upload.key = object.key;
