@@ -9,6 +9,16 @@ module.exports = function(grunt) {
 			js: ['stella.min.js']
 		},
 
+		concat : {
+			options: {
+				separator: '',
+			},
+			dist: {
+				src : ['src/stella.js', 'src/*.js', 'src/**/*.js','export.js'],
+				dest : 'stella.min.js'
+			}
+		},
+
 		uglify: {
 			options: {
 				sourceMap: false,
@@ -19,7 +29,8 @@ module.exports = function(grunt) {
 			},
 			my_target : {
 				files : {
-					'stella.min.js' : ['src/stella.js', 'src/*.js', 'src/**/*.js']
+					//'stella.min.js' : ['src/stella.js', 'src/*.js', 'src/**/*.js','src/export.js']
+					'stella.min.js' : ['stella.min.js']
 				}
 			}
 		},
@@ -32,7 +43,8 @@ module.exports = function(grunt) {
 				files: ['src/stella.js', 'src/*.js', 'src/**/*.js'],
 				tasks: [
 					'clean:js',
-					'uglify'
+					'concat',
+					//'uglify'
 				]
 			}
 		}
@@ -42,9 +54,12 @@ module.exports = function(grunt) {
 
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', ['watch']);
+
+
 
 };
