@@ -10,6 +10,8 @@ module.exports = {
 		'./src/stella.js'
 	],
 	output : {
+		library : 'stella-js-client',
+		libraryTarget : 'umd',
 		path : __dirname,
 		filename : 'stella.min.js'
 	},
