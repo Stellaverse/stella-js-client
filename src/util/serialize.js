@@ -1,7 +1,7 @@
 
 
 
-stella.util.serialize = function(obj, prefix) {
+module.exports = function(obj, prefix) {
 
 	var str = [], p;
 

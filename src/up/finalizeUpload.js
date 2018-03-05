@@ -2,7 +2,7 @@
 
 
 
-stella.up.finalizeUpload = function(upload) {
+module.exports = function(upload) {
 
 	if (upload.to === 'account') {
 		var request = {

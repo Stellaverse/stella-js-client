@@ -1,7 +1,7 @@
 
 
 
-stella.util.setActiveAccount = function(account) {
+module.exports = function(account) {
 
 	localStorage.setItem('stellaAccount', JSON.stringify(account));
 

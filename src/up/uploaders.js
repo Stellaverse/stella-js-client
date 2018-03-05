@@ -1,4 +1,4 @@
 
 
 
-stella.up.uploaders = [];
+module.exports = [];

@@ -1,7 +1,7 @@
 
 
 
-stella.up.initializeUpload = function(upload) {
+module.exports = function(upload) {
 
 	var account = stella.util.getActiveAccount();
 	var to = upload.to || 'drive';
@@ -66,7 +66,7 @@ stella.up.initializeUpload = function(upload) {
 		if (to === 'drive') {
 
 			var object = result.data;
-			
+
 			upload.objectID = object._id;
 			upload.url = object.url;
 			upload.key = object.key;

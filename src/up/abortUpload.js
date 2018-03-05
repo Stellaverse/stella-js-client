@@ -1,7 +1,7 @@
 
 
 
-stella.up.abortUpload = function(uploadID) {
+module.exports = function(uploadID) {
 
 	var upload = stella.up.uploads[uploadID];
 	var uploader = stella.up.uploaders[uploadID];

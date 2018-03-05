@@ -1,7 +1,7 @@
 
 
 
-stella.config = {
+module.exports = {
 	api : {
 		url : 'https://api.stellaverse.com',
 		version : 1

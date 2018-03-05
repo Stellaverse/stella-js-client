@@ -2,7 +2,7 @@
 
 
 
-stella.up.uploadFile = function(upload) {
+module.exports = function(upload) {
 
 	var bucket = upload.bucket || stella.config.bucket;
 

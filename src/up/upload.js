@@ -2,7 +2,7 @@
 
 
 
-stella.up.upload = function(upload) {
+module.exports = function(upload) {
 
 	if (!window.AWS) {
 		console.error('[stella.js] The AWS SDK for Javascript v2.171.0 or greater is required to upload files using Stella Up.');

@@ -1,7 +1,7 @@
 
 
 
-stella.api.request = function(request, callback) {
+module.exports = function(request, callback) {
 
 	request.method = request.method.toLowerCase() || 'get';
 	request.url = request.url || stella.config.api.url;
