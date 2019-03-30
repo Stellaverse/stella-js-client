@@ -1,8 +1,8 @@
 *.
 .deprecated
 .test
-!.gitignore
 npm-debug.log
 node_modules/*
 index.html
 aws-sdk-2.171.0.min.js
+!.gitignore

@@ -3,6 +3,6 @@
 
 module.exports = function() {
 
-	return JSON.parse(localStorage.getItem('stellaAccount'));
+	return JSON.parse(localStorage.getItem('stella-account'));
 
 };

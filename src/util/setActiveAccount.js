@@ -3,7 +3,7 @@
 
 module.exports = function(account) {
 
-	localStorage.setItem('stellaAccount', JSON.stringify(account));
+	localStorage.setItem('stella-account', JSON.stringify(account));
 
 	return true;
 

@@ -3,14 +3,21 @@
 
 module.exports = function(request, callback) {
 
+	stella.config.api.request.events.init(request);
+
 	request.method = request.method.toLowerCase() || 'get';
 	request.url = request.url || stella.config.api.url;
 	request.version = request.version || stella.config.api.version;
 
 	request.projectID = request.projectID || stella.config.projectID;
 
+	if (!request.projectID) {
+		alert('ERROR:\n\nYou must provide a projectID with the request or in the config.');
+		return;
+	}
+
 	request.auth = request.auth || {};
-	request.auth.session = localStorage.getItem('stellaSession');
+	request.auth.session = localStorage.getItem('stella-session');
 
 	if (request.method === 'get') {
 		request.url += '/' + request.projectID;
@@ -26,9 +33,13 @@ module.exports = function(request, callback) {
 	var xhr = new XMLHttpRequest();
 
 	xhr.addEventListener('error', function(event) {
-		request.xhrError = event;
-		console.log('[stella.js] XHR ERROR: Unable to contact ' + stella.config.api.url + ' due to network error');
+		console.log('[stella-js-client] XHR ERROR: Unable to contact ' + stella.config.api.url + '.');
+		console.log('[stella-js-client] REQUEST:');
 		console.log(request);
+		console.log('[stella-js-client] ERROR:');
+		console.log(event);
+		request.xhrError = event;
+		stella.config.api.request.events.networkError(request);
 	});
 
 	xhr.addEventListener('load', function(event) {
@@ -36,9 +47,13 @@ module.exports = function(request, callback) {
 		var result = JSON.parse(event.target.response);
 
 		if (result.auth) {
-			localStorage.setItem('stellaSession', result.auth.session);
+			localStorage.setItem('stella-session', result.auth.session);
+		}
+
+		if (result.error) {
+			stella.config.api.request.events.error(result);
 		} else {
-			localStorage.removeItem('stellaSession');
+			stella.config.api.request.events.success(result);
 		}
 
 		if (callback) return callback(result);
