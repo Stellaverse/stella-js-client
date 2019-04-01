@@ -1,6 +1,4 @@
 *.
-.deprecated
-.test
 npm-debug.log
 node_modules/*
 index.html

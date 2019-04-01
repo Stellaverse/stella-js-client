@@ -60,6 +60,8 @@ module.exports = function(request, callback) {
 
 	});
 
+	stella.config.api.request.events.beforeSend(request);
+
 	xhr.open(request.method, request.url, true);
 	xhr.setRequestHeader('Stella-Api', request.api);
 	xhr.setRequestHeader('Stella-Api-Version', request.version);
