@@ -12,7 +12,7 @@ module.exports = function(request, callback) {
 	request.projectID = request.projectID || stella.config.projectID;
 
 	if (!request.projectID) {
-		alert('ERROR:\n\nYou must provide a projectID with the request or in the config.');
+		alert('ERROR:\n\nYou must provide a projectID with the request, or in the config.');
 		return;
 	}
 

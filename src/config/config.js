@@ -15,8 +15,5 @@ module.exports = {
 			}
 		}
 	},
-	bucket : 'cdn.stellaverse.com',
-	recaptcha : {
-		key : '6LeZ6RMTAAAAAFaHzXK76s60uMlBlKzSe5NsWUL1'
-	}
+	bucket : 'cdn.stellaverse.com'
 };
