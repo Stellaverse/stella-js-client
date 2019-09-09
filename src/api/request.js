@@ -3,6 +3,8 @@
 
 module.exports = function(request, callback) {
 
+	let context = request.context;
+
 	stella.config.api.request.events.init(request);
 
 	request.method = request.method.toLowerCase() || 'get';
@@ -12,7 +14,7 @@ module.exports = function(request, callback) {
 	request.projectID = request.projectID || stella.config.projectID;
 
 	if (!request.projectID) {
-		alert('ERROR:\n\nYou must provide a projectID with the request, or in the config.');
+		alert('STELLA ERROR:\n\nYou must provide a projectID with the request, or in the config.');
 		return;
 	}
 
@@ -45,6 +47,8 @@ module.exports = function(request, callback) {
 	xhr.addEventListener('load', function(event) {
 
 		var result = JSON.parse(event.target.response);
+
+		result.request.context = context;
 
 		if (result.auth) {
 			localStorage.setItem('stella-session', result.auth.session);
